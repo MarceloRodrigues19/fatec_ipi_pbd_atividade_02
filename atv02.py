@@ -281,10 +281,10 @@ user_ids_by_sexo_interest = defaultdict(list)
 for user_id, interest in sexo_interest:
     user_ids_by_sexo_interest[interest].append(user_id)
 
-genre_interests_by_user_id = defaultdict(list)
+sexo_interests_by_user_id = defaultdict(list)
 
 for user_id, interest in sexo_interest:
-    genre_interests_by_user_id[user_id].append(interest)
+    sexo_interests_by_user_id[user_id].append(interest)
 
 user_ids_by_interest = defaultdict(list)
 
@@ -299,7 +299,7 @@ for user_id, interest in interests:
 def users_with_common_sexo_interests (user):
     return set([
         interested_user_id
-        for interest in genre_interests_by_user_id[user["id"]]
+        for interest in sexo_interests_by_user_id[user["id"]]
         for interested_user_id in user_ids_by_sexo_interest[interest]
         if interested_user_id != user["id"]
     ])
